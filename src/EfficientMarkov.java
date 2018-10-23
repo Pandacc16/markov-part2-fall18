@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-class EfficientMarkov extends BaseMarkov
+public class EfficientMarkov extends BaseMarkov
 {
 	private Map<String, ArrayList<String>> myMap;
 	
@@ -27,11 +27,11 @@ class EfficientMarkov extends BaseMarkov
 			if (myMap.containsKey(fakeKey) == false) {
 				myMap.put(fakeKey, new ArrayList<String>());
 			}
-			if (fakeValue == null == false) {
-			myMap.get(fakeKey).add(fakeValue);
+			if (i == myText.length() - myOrder) {
+				myMap.get(fakeKey).add(PSEUDO_EOS);
 			}
 			else {
-				myMap.get(fakeKey).add(PSEUDO_EOS);
+				myMap.get(fakeKey).add(myText.substring(i + myOrder, i + myOrder+1));
 			}
 		}
 	}
