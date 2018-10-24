@@ -177,4 +177,5 @@ time	source	#chars
 
 I didn't get to finish running as it took too long, but the time column shows that
 even doubling the Order and then typing in something as large as 100 doesn't have a
-huge impact on the runtime relative to something small like Order 1.
+huge impact on the runtime relative to something small like Order 1. However, 
+benchmark took increasingly long as the order increased.
