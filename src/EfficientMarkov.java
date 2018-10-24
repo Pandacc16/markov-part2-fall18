@@ -22,8 +22,13 @@ public class EfficientMarkov extends BaseMarkov
 		myText = text;
 		
 		for (int i=0; i < myText.length()- myOrder + 1; i ++) {
-			String fakeKey = myText.substring(i, i+myOrder);
-			String fakeValue = myText.substring(i+myOrder,i+myOrder + 1);
+			String fakeKey = null;
+			if (i+myOrder <= myText.length()) {
+				fakeKey = myText.substring(i, i+myOrder);
+			}
+			else {
+				fakeKey = myText.substring(i, myText.length());
+			}
 			if (myMap.containsKey(fakeKey) == false) {
 				myMap.put(fakeKey, new ArrayList<String>());
 			}
