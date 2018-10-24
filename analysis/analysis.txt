@@ -3,6 +3,8 @@ This is the analysis for Markov Part 2, Fall 2018
 Include your name and net id here. Answer the questions from the assignment 
 that are reproduced below
 
+Joshua Farahzad (jf244)
+
 (1) Determine (from running Benchmark.java) how long it takes for 
 BaseMarkov to generate 2,000, 4,000, 8,000, 16,000, and 32,000 
 random characters using the default file and an order 5 Markov Model. 
@@ -10,6 +12,36 @@ Include these timings in your report.
 The program also generates 4,096 characters using texts that increase in 
 size from 496,768 characters to 4,967,680 characters (10 times the number).  
 Do you the timings support the O(NT) analysis for BaseMarkov?
+
+Starting tests
+
+time	source	#chars
+0.209	496768	2000
+0.406	496768	4000
+0.799	496768	8000
+1.303	496768	16000
+3.903	496768	32000
+
+0.429	496768	4096
+0.842	993536	4096
+1.268	1490304	4096
+1.819	1987072	4096
+2.150	2483840	4096
+2.609	2980608	4096
+3.749	3477376	4096
+3.591	3974144	4096
+3.966	4470912	4096
+4.395	4967680	4096
+
+Finished tests
+
+The timing do support the O(NT) time as for every time the number of characters
+doubles the runtime doubles as well roughly. Or when number of characters remains
+the same and the source doubles the runtime roughly doubles as well.
+
+An important note is that as the source #'s and especially the # of chars
+gets larger the O(NT) analysis seems a bit off; however, I'd say that
+the general pattern of O(NT) is abided.
 
 
 
@@ -21,7 +53,128 @@ The program also generates 4,096 characters using texts that increase in
 size from 496,768 characters to 4,967,680 characters (10 times the number).  
 Do you the timings support the O(N+T) analysis for EfficientMarkov?
 
+Starting tests
+
+time	source	#chars
+0.214	496768	2000
+0.409	496768	4000
+0.809	496768	8000
+1.301	496768	16000
+3.193	496768	32000
+
+0.420	496768	4096
+0.837	993536	4096
+1.265	1490304	4096
+1.681	1987072	4096
+2.118	2483840	4096
+2.587	2980608	4096
+3.067	3477376	4096
+3.515	3974144	4096
+3.923	4470912	4096
+4.374	4967680	4096
+
+Finished tests
+
+No O(N+T) is not abided. When the source remains the same and the number of chars 
+doubles but is still signifigantly less
+than the number of source characters, but runtime doubles then
+O(N+T) is not abided.
+
 (3)The tests in the class Benchmark use an order-5 Markov Model. 
 Run tests that you think are appropriate to determine if the order of the 
 Markov Model has a significant impact on the running time for BaseMarkov. 
 Explain your reasoning.
+
+Order-1 Markov Model
+
+Starting tests
+
+time	source	#chars
+0.024	496768	200
+0.063	496768	400
+0.087	496768	800
+0.160	496768	1600
+0.493	496768	3200
+
+0.440	496768	4096
+0.853	993536	4096
+1.267	1490304	4096
+1.701	1987072	4096
+2.182	2483840	4096
+2.578	2980608	4096
+3.046	3477376	4096
+3.595	3974144	4096
+4.022	4470912	4096
+4.389	4967680	4096
+
+Finished tests
+
+Order-2 Markov Model
+
+Starting tests
+
+time	source	#chars
+0.023	496768	200
+0.044	496768	400
+0.089	496768	800
+0.171	496768	1600
+0.346	496768	3200
+
+0.427	496768	4096
+0.828	993536	4096
+1.278	1490304	4096
+1.724	1987072	4096
+2.091	2483840	4096
+2.601	2980608	4096
+3.122	3477376	4096
+3.543	3974144	4096
+3.917	4470912	4096
+4.320	4967680	4096
+
+Finished tests
+
+Order-4 Markov Model
+
+Starting tests
+
+time	source	#chars
+0.021	496768	200
+0.044	496768	400
+0.084	496768	800
+0.171	496768	1600
+0.331	496768	3200
+
+0.414	496768	4096
+0.838	993536	4096
+1.296	1490304	4096
+1.663	1987072	4096
+2.132	2483840	4096
+2.587	2980608	4096
+3.039	3477376	4096
+3.453	3974144	4096
+4.103	4470912	4096
+4.463	4967680	4096
+
+Finished tests
+
+Order-100 Markov Model (Didn't finish test as it was taking too long)
+Starting tests
+
+time	source	#chars
+0.020	496768	200
+0.040	496768	400
+0.080	496768	800
+0.156	496768	1600
+0.316	496768	3200
+
+0.402	496768	4096
+0.824	993536	4096
+1.376	1490304	4096
+2.036	1987072	4096
+2.365	2483840	4096
+2.868	2980608	4096
+3.278	3477376	4096
+
+I didn't get to finish running as it took too long, but the time column shows that
+even doubling the Order and then typing in something as large as 100 doesn't have a
+huge impact on the runtime relative to something small like Order 1.
